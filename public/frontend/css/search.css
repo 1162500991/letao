@@ -1,0 +1,57 @@
+.mui-content {
+  padding: 0 10px;
+}
+
+
+/* 历史记录 */
+.lt-history {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.lt-history-title {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+.lt-history-title p {
+  color: #666;
+}
+
+.lt-history-title span:first-child {
+  float: left;
+}
+
+
+.lt-history-title span:last-child {
+  float: right;
+}
+
+
+.lt-history-list {
+  width: 100%;
+}
+.lt-history-list ul {
+  width: 100%;
+}
+
+.lt-history-list li {
+  width: 100%;
+  border: 1px solid #666;
+  padding: 2px 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.lt-history-list span:first-child {
+  float: left;
+}
+
+.lt-history-list span:last-child {
+  float: right;
+  padding: 2px 5px;
+}

@@ -1,0 +1,40 @@
+.ui-page-login,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.mui-content{height: 100%;}
+.mui-bar {
+	background-color: #006699;
+	/* position: relative; */
+}
+
+.mui-bar .mui-tab-item {
+	color: #fff;
+	padding: 0;
+	margin: 0;
+}
+.mui-tab-item span{
+	display: block;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	height: 12px;
+	box-sizing: border-box;
+}
+.mui-bar-nav span{
+	position: absolute;
+	/* top: 15px; */
+	line-height: 44px;
+	right:15px;
+	font-size: 18px;
+	color: #fff;
+
+}
+.mui-title {
+	color: #fff;
+}
+
+

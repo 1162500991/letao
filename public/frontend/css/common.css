@@ -1,0 +1,170 @@
+.lt-header {
+  background-color: #006699;
+}
+
+#lt-search,#lt-back {
+  line-height: 44px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.lt-header .mui-title {
+  color: #fff;
+}
+
+.lt-header .mui-title input {
+  height: 30px;
+  /* 这里没有颜色的时候 光标其实有的只是光标是白色的 */
+  color: #000;
+}
+
+/* 底部 */
+.lt-footer {
+  background-color: #006699;
+}
+
+.lt-footer .mui-item {
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #929292;
+}
+
+.lt-footer .mui-item.mui-active span {
+  color: orange;
+}
+
+.lt-footer .mui-item.mui-active span:first-child {
+  color: orange;
+}
+
+
+.lt-footer .mui-item span:first-child {
+  color: #fff;
+}
+
+.lt-footer .mui-tab-label {
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+
+/* 搜索框 */
+.lt-search {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  padding-right: 55px;
+  margin-top: 20px;
+
+  /* border-radius: 10px; */
+  /* overflow: hidden; */
+}
+
+.lt-search input {
+  width: 100%;
+  padding: 0 15px;
+  height: 40px;
+  margin: 0;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid #006699;
+}
+
+.lt-search span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55px;
+  height: 40px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  background-color: #006699;
+  border: 1px solid #006699;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+/* 商品列表 */
+.lt-sports-content {
+  width: 100%;
+}
+
+.lt-sports-content ul {
+  width: 100%;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.lt-sports-content li {
+  float: left;
+  width: 50%;
+  padding: 0 2px;
+  margin-bottom: 10px;
+}
+
+.lt-sports-content .item {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.lt-sports-content .pic {
+  display: block;
+  width: 100%;
+}
+
+.lt-sports-content .pic img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.lt-sports-content p {
+  width: 100%;
+  padding: 0 5px;
+  font-size: 14px;
+  color: #333;
+
+  /* 多行出现省略号 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.lt-sports-content .price {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.lt-sports-content .price span:first-child {
+  color: red;
+}
+
+.lt-sports-content .price span:last-child {
+  color: #999;
+  text-decoration: line-through;
+}
+
+.lt-sports-content .btn {
+  display: block;
+  width: 75px;
+  height: 24px;
+  background-color: #006699;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 25px;
+  text-align: center;
+  margin:  10px auto;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 引入浏览器默认样式 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <!-- 引入MUI -->
+  <link rel="stylesheet" href="../libs/mui/css/mui.css">
+  <!-- 引入字体图标库 -->
+  <link rel="stylesheet" href="../res/fontAwesome/css/font-awesome.min.css">
+  <!-- 引入公共样式 -->
+  <link rel="stylesheet" href="../css/common.css">
+  <!-- 引入页面样式 -->
+  <link rel="stylesheet" href="../css/searchList.css">
+
+  <title>乐淘云购-搜索中心</title>
+  <!-- 引入网站图标 -->
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+  <!-- 1.头部 -->
+  <header class="lt-header mui-bar mui-bar-nav">
+    <a id="lt-back" class="fa fa-arrow-left mui-pull-left" href="javascript:history.back();"></a>
+    <a id="lt-search" class="fa fa-search mui-pull-right mui-plus-visible"></a>
+    <h1 class="mui-title">
+      搜索结果
+    </h1>
+  </header>
+  <!-- 2.底部 -->
+  <nav class="lt-footer mui-bar mui-bar-tab">
+    <a class="mui-item" href="../index.html">
+      <span class="fa fa-home"></span>
+      <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-item" href="../sort.html">
+      <span class="fa fa-reorder"></span>
+      <span class="mui-tab-label">分类</span>
+    </a>
+    <a class="mui-item " href="../cart.html">
+      <span class="fa fa-shopping-cart"></span>
+      <span class="mui-tab-label">购物车</span>
+    </a>
+    <a class="mui-item" href="../profile.html">
+      <span class="fa fa-user"></span>
+      <span class="mui-tab-label">个人中心</span>
+    </a>
+  </nav>
+  <!-- 3.主体 -->
+  <main class="mui-content">
+    <!-- 搜索框 -->
+    <div class="lt-searchlist">
+      <div class="lt-search mui-input-row">
+        <input type="text" class="mui-input-text" placeholder="搜索你喜欢的商品">
+        <span>搜索</span>
+      </div>
+    </div>
+    <!-- 排序项目 -->
+    <div class="lt-sort">
+      <a href="javascript:;">
+        <span>上架时间</span>
+        <i class="fa fa-angle-down"></i>
+      </a>
+      <a href="javascript:;">
+        <span>价格</span>
+        <i class="fa fa-angle-down"></i>
+      </a>
+      <a href="javascript:;">
+        <span>销量</span>
+        <i class="fa fa-angle-down"></i>
+      </a>
+      <a href="javascript:;">
+        <span>折扣</span>
+        <i class="fa fa-angle-down"></i>
+      </a>
+    </div>
+    <!-- 商品列表 -->
+    <div class="lt-sports-content lt-searchlist-content">
+      <ul>
+        
+      </ul>
+    </div>
+
+  </main>
+  <script type="text/template" id="tpl1">
+    <%for (var i = 0; i< data.length; i++) {%>
+      <li>
+          <div class="item">
+            <a class="pic" href="javascript:;">
+              <img src="<%=data[i].pic[0].picAddr%>" alt="">
+            </a>
+            <p>
+              <%=data[i].proName%>
+            </p>
+  
+            <div class="price">
+              <span>&yen;<%= data[i].price%></span>
+              <span>&yen;<%= data[i].oldPrice%></span>
+            </div>
+            <a class="btn" href="javascript:;" data-id="<%=data[i].id%>"><%=data[i].num%>购买</a>
+          </div>
+        </li>
+  <%}%>
+    </script>
+
+  <script src="../libs/zepto/zepto.min.js"></script>
+  <!-- 引入MUI -->
+  <script src="../libs/mui/js/mui.js"></script>
+  <!-- 引入模板引擎 -->
+  <script src="../libs/artTemplate/template-native.js"></script>
+  <script>
+    $(function () {
+      var url = new URLSearchParams(location.search);
+      var keyword = url.get('keyword');
+      // alert(keyword);
+      getProduct(1, keyword);
+      $('.lt-search span').click(function () {
+        var value = $('.mui-input-text').val();
+        if (!value.trim()) {
+          mui.alert('请输出关键字');
+        } else {
+          getProduct(1, value);
+        }
+
+      });
+    });
+    // 商品渲染
+    var getProduct = function (pageNum, proName, price, num) {
+      // alert(proName);
+      $.ajax({
+        type: 'GET',
+        url: '/product/queryProduct',
+        data: {
+          page: pageNum || 1,
+          pageSize: 8,
+          proName: proName || null,
+          price: price || null,
+          num: num || null
+        },
+        success: function (data) {
+          // alert(1);
+          console.log(data);
+          if (data.data.length == 0) {
+            mui.alert('没有相关商品');
+          }
+          var searchResult = template('tpl1', data);
+          $('.lt-searchlist-content ul').html(searchResult);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

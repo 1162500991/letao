@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link href="css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="res/fontAwesome/css/font-awesome.min.css">
+	<link href="css/main.css" rel="stylesheet" />
+	<style>
+		html,
+		body {
+			overflow-y: auto;
+			padding-bottom: 50px;
+			background: #fff;
+			height: 100%;
+		}
+
+		.main-content {
+			height: 100%;
+		}
+
+		.mui-slider {
+			margin-top: 44px;
+			/* overflow: hidden; */
+		}
+
+		.mui-slider-indicator {
+			bottom: 22px;
+		}
+
+		.shoes {
+			width: 100%;
+			padding: 0 10px;
+			background: #fff;
+			overflow: hidden;
+			margin-top: -16px;
+			border-bottom: 1px solid #ccc;
+
+		}
+
+		.shoes-content {
+			width: 100%;
+		}
+
+		.shoes-content ul {
+
+			width: 100%;
+			overflow: hidden;
+			list-style: none;
+			padding: 0;
+		}
+
+		.shoes-content li {
+			float: left;
+			width: 33.33333%;
+			/* height: auto; */
+		}
+
+		.shoes-content li img {
+			width: 100%;
+			vertical-align: middle;
+			/* height: auto; */
+		}
+
+		.run {
+			width: 100%;
+			padding: 0 10px;
+			overflow: hidden;
+			/* position: relative; */
+		}
+
+		.run a {
+			display: block;
+			float: left;
+			width: 67.1%;
+			box-sizing: border-box;
+		}
+
+		.run a img {
+			float: left;
+			width: 50%;
+			vertical-align: middle;
+		}
+
+		.run a:nth-child(2) {
+			width: 32.9%;
+			float: right;
+		}
+
+		.run a:nth-child(2) img {
+			width: 100%;
+		}
+
+		.pinpai {
+			width: 100%;
+			overflow: hidden;
+			padding:  0 12px;
+		}
+
+		.pinpai ul {
+			width: 100%;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.pinpai li {
+			float: left;
+			width: 25%;
+		}
+
+		.pinpai li img {
+			width: 100%;
+			
+		}
+
+		.pinpai .li1 {
+			width: 100%;
+		}
+		.pinpai a{
+			margin-top: 10px;
+			width: 49%;
+			float: left;
+			display: block;
+		
+			border: 1px solid #ccc;
+		}
+		.pinpai .flat-right{
+			float: right;
+		}
+		.pinpai a img{
+			width: 100%;
+		}
+		.pinpai a span{
+			font-size: 12px;
+			text-align: center;
+			padding: 0 12px ; 
+			display: block;
+			font-family: "Microsoft YaHei";
+			margin-top: 10px;
+		}
+		.pinpai a i{
+			font-style: normal;
+		
+		}
+		.pinpai-span {
+			width: 82px;
+			height: 32px;
+			color: #fff;
+			background-color: #006699;
+			margin: 10px auto;
+			line-height: 32px;
+			/* padding: 0; */
+			border-radius: 3px;
+		}
+		.pinpai a:nth-child(-n+2){
+			margin-top: 0;
+		}
+		.zhuanlan{
+			margin-top: 10px;
+			width: 100%;
+			padding: 0 10px;
+			overflow: hidden;
+		}
+		.zhuanlan img{
+			width: 100%;
+		}
+
+
+		.zhuanlan a{
+			margin-top: 10px;
+			width: 49%;
+			float: left;
+			display: block;
+		
+			border: 1px solid #ccc;
+		}
+		.zhuanlan .flat-right{
+			float: right;
+		}
+		.zhuanlan a img{
+			width: 100%;
+		}
+		.zhuanlan a span{
+			font-size: 12px;
+			text-align: center;
+			padding: 0 12px ; 
+			display: block;
+			font-family: "Microsoft YaHei";
+			margin-top: 10px;
+		}
+		.zhuanlan a i{
+			font-style: normal;
+		
+		}
+		.pinpai-span {
+			width: 82px;
+			height: 32px;
+			color: #fff;
+			background-color: #006699;
+			margin: 10px auto;
+			line-height: 32px;
+			/* padding: 0; */
+			border-radius: 3px;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">乐淘云购1</h1>
+		<span class="fa fa-search" aria-hidden="true"></span>
+	</header>
+	<!-- 轮播图 -->
+	<div class="main-content" id="wrapper">
+		<div>
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="img/banner9.png">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/banner1.png">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/banner2.png">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/banner3.png">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/banner4.png">
+						</a>
+					</div>
+
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="img/banner1.png">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!-- shoes -->
+			<div class="shoes">
+				<div class="shoes-content">
+					<ul>
+						<li>
+							<img src="img/nav1.png" alt="">
+						</li>
+						<li>
+							<img src="img/nav2.png" alt="">
+						</li>
+						<li>
+							<img src="img/nav3.png" alt="">
+						</li>
+						<li>
+							<img src="img/nav4.png" alt="">
+						</li>
+						<li>
+							<img src="img/nav5.png" alt="">
+						</li>
+						<li>
+							<img src="img/nav6.png" alt="">
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="run">
+
+				<a href="javascript:;">
+					<img src="img/active1.png" alt="">
+					<img src="img/active2.png" alt="">
+				</a>
+				<a href="javascript:;">
+					<img src="img/active3.png" alt="">
+				</a>
+				<a href="javascript:;">
+					<img src="img/active4.png" alt="">
+					<img src="img/active5.png" alt="">
+				</a>
+
+			</div>
+			<div class="pinpai">
+				<img src="img/title0.png" class="li1" alt="">
+				<ul>
+
+					<li>
+						<img src="img/brand1.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand2.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand3.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand4.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand5.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand6.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand7.png" alt="">
+					</li>
+					<li>
+						<img src="img/brand8.png" alt="">
+					</li>
+				
+
+				</ul>
+				<img class="li1" src="img/title1.png" alt="">
+
+				<a href="javascript:;">
+					<img src="img/product.jpg" alt="" >
+					<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+					<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+					<span class="pinpai-span">立即购买</span>
+				</a>
+				<a href="javascript:;" class="flat-right">
+					<img src="img/product.jpg" alt="">
+					<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+					<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+					<span class="pinpai-span">立即购买</span>
+				</a>
+				<a href="javascript:;">
+						<img src="img/product.jpg" alt="">
+						<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+						<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+						<span class="pinpai-span">立即购买</span>
+					</a>
+					<a href="javascript:;" class="flat-right">
+						<img src="img/product.jpg" alt="">
+						<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+						<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+						<span class="pinpai-span">立即购买</span>
+					</a>
+
+			</div>
+			<div class="zhuanlan">
+				<img src="img/title2.png" alt="">
+				<a href="javascript:;">
+						<img src="img/product.jpg" alt="" >
+						<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+						<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+						<span class="pinpai-span">立即购买</span>
+					</a>
+					<a href="javascript:;" class="flat-right">
+						<img src="img/product.jpg" alt="">
+						<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+						<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+						<span class="pinpai-span">立即购买</span>
+					</a>
+					<a href="javascript:;">
+							<img src="img/product.jpg" alt="">
+							<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+							<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+							<span class="pinpai-span">立即购买</span>
+						</a>
+						<a href="javascript:;" class="flat-right">
+							<img src="img/product.jpg" alt="">
+							<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+							<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+							<span class="pinpai-span">立即购买</span>
+						</a>
+			</div>
+			<div class="zhuanlan">
+					<img src="img/title3.png" alt="">
+					<a href="javascript:;">
+							<img src="img/product.jpg" alt="" >
+							<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+							<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+							<span class="pinpai-span">立即购买</span>
+						</a>
+						<a href="javascript:;" class="flat-right">
+							<img src="img/product.jpg" alt="">
+							<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+							<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+							<span class="pinpai-span">立即购买</span>
+						</a>
+						<a href="javascript:;">
+								<img src="img/product.jpg" alt="">
+								<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+								<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+								<span class="pinpai-span">立即购买</span>
+							</a>
+							<a href="javascript:;" class="flat-right">
+								<img src="img/product.jpg" alt="">
+								<span style="color:#ccc;">adidas阿迪达斯 男士 场下休闲篮球鞋S8300</span>
+								<span><i style="color:red">¥560</i>&emsp;<del style="color:#c9c9c9">¥888.00</del></span>
+								<span class="pinpai-span">立即购买</span>
+							</a>
+				</div>
+		</div>
+	</div>
+	<!-- 底部 -->
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item" href="#tabbar">
+			<span class="fa fa-home" aria-hidden="true"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-chat">
+			<span class="fa fa-bars" aria-hidden="true"></span>
+			<span class="mui-tab-label">消息</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-contact">
+			<span class="fa fa-shopping-cart" aria-hidden="true"></span>
+			<span class="mui-tab-label">通讯录</span>
+			
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-map">
+			<span class="fa fa-user" aria-hidden="true"></span>
+			<span class="mui-tab-label">设置</span>
+		</a>
+	</nav>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.enterfocus.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/iscroll.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	
+		var slider = mui("#slider");
+		slider.slider({
+			interval: 1000
+		});
+		var myScroll = new IScroll('#wrapper', {
+			mouseWheel: true,
+			scrollbars: false
+		});
+	</script>
+</body>
+
+</html>
