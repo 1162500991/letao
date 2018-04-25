@@ -19,7 +19,8 @@
 			padding: 0;
 			margin: 0;
 		}
-		.mui-tab-item span{
+
+		.mui-tab-item span {
 			display: block;
 			font-size: 12px;
 			padding: 0;
@@ -27,15 +28,17 @@
 			height: 12px;
 			box-sizing: border-box;
 		}
-		.mui-bar-nav i{
+
+		.mui-bar-nav i {
 			position: absolute;
 			/* top: 15px; */
 			line-height: 44px;
-			left:15px;
+			left: 15px;
 			font-size: 18px;
 			color: #fff;
-			
+
 		}
+
 		.mui-title {
 			color: #fff;
 		}
@@ -156,16 +159,16 @@
 		<form id='login-form' class="mui-input-group">
 			<div class="mui-input-row">
 
-				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="用户名/手机号">
+				<input id='account' type="text" class="mui-input-clear mui-input" name="username" placeholder="用户名/手机号">
 			</div>
 			<div class="mui-input-row">
 
-				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="密码">
+				<input id='password' type="password" name="password" class="mui-input-clear mui-input" placeholder="密码">
 			</div>
 		</form>
 
 		<div class="mui-content-padded">
-			<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+			<button id='login' type="button" class="mui-btn mui-btn-block mui-btn-primary">登录</button>
 			<div class="link-area">
 				<a id='forgetPassword'>忘记密码</a>
 			</div>
@@ -176,11 +179,11 @@
 	</div>
 	<nav class="mui-bar mui-bar-tab">
 		<a class="mui-tab-item" href="#tabbar">
-				<span class="fa fa-home" aria-hidden="true"></span>
+			<span class="fa fa-home" aria-hidden="true"></span>
 			<span class="mui-tab-label">首页</span>
 		</a>
 		<a class="mui-tab-item" href="#tabbar-with-chat">
-			<span  class="fa fa-bars" aria-hidden="true"></span>
+			<span class="fa fa-bars" aria-hidden="true"></span>
 			<span class="mui-tab-label">消息</span>
 		</a>
 		<a class="mui-tab-item" href="#tabbar-with-contact">
@@ -192,10 +195,54 @@
 			<span class="mui-tab-label">设置</span>
 		</a>
 	</nav>
+	<script src="libs/zepto/zepto.min.js"></script>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.enterfocus.js"></script>
 	<script src="js/app.js"></script>
 
+	<script>
+
+		$('#login').on('tap', function () {
+			var userName = $('#account').val();
+			var userPwd = $('#password').val();
+			var a = $('#login-form').serialize();
+			console.log(a);
+			// console.log(userName,userPwd);
+			$.ajax({
+				type: 'POST',
+				url: '/user/login',
+				data: $('#login-form').serialize(),
+				beforeSend: function () {
+					if (!userName.trim()) {
+						mui.toast('请输入用户名');
+						return false;
+					}
+					if (!userPwd.trim()) {
+						mui.toast('请输入密码');
+						return false;
+					}
+				},
+				success: function (data) {
+					// console.log(data);
+					if (data.error == 403) {
+						mui.toast(data.message);
+						return false;
+					}
+					if (data.success) {
+						var url = new URLSearchParams(location.search);
+						var returnUrl = url.get('url');
+						// console.log(!returnUrl==true);
+						if (!returnUrl) {
+							// 如果没有url 那么就跳转到个人中心
+							location.href = 'person.html';
+						} else {
+							location.href = returnUrl;
+						}
+					}
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>

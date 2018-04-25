@@ -51,40 +51,41 @@
     </a>
   </nav>
   <!-- 3.主体 -->
-  <main class="mui-content">
-    <!-- 搜索框 -->
-    <div class="lt-searchlist">
-      <div class="lt-search mui-input-row">
-        <input type="text" class="mui-input-text" placeholder="搜索你喜欢的商品">
-        <span>搜索</span>
+  <main class="mui-content  mui-scroll-wrapper" id="refreshContainer">
+    <div class="mui-scroll">
+      <!-- 搜索框 -->
+      <div class="lt-searchlist">
+        <div class="lt-search mui-input-row">
+          <input type="text" class="mui-input-text" placeholder="搜索你喜欢的商品">
+          <span class="lt-search-span">搜索</span>
+        </div>
+      </div>
+      <!-- 排序项目 -->
+      <div class="lt-sort">
+        <a href="javascript:;">
+          <span>上架时间</span>
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <a href="javascript:;">
+          <span>价格</span>
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <a href="javascript:;">
+          <span>销量</span>
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <a href="javascript:;">
+          <span>折扣</span>
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </div>
+      <!-- 商品列表 -->
+      <div class="lt-sports-content lt-searchlist-content">
+        <ul>
+
+        </ul>
       </div>
     </div>
-    <!-- 排序项目 -->
-    <div class="lt-sort">
-      <a href="javascript:;">
-        <span>上架时间</span>
-        <i class="fa fa-angle-down"></i>
-      </a>
-      <a href="javascript:;">
-        <span>价格</span>
-        <i class="fa fa-angle-down"></i>
-      </a>
-      <a href="javascript:;">
-        <span>销量</span>
-        <i class="fa fa-angle-down"></i>
-      </a>
-      <a href="javascript:;">
-        <span>折扣</span>
-        <i class="fa fa-angle-down"></i>
-      </a>
-    </div>
-    <!-- 商品列表 -->
-    <div class="lt-sports-content lt-searchlist-content">
-      <ul>
-        
-      </ul>
-    </div>
-
   </main>
   <script type="text/template" id="tpl1">
     <%for (var i = 0; i< data.length; i++) {%>
@@ -113,22 +114,75 @@
   <!-- 引入模板引擎 -->
   <script src="../libs/artTemplate/template-native.js"></script>
   <script>
+   
     $(function () {
+      // mui('.mui-scroll-wrapper').scroll({
+      //   scrollY: true, //是否竖向滚动
+      //   scrollX: false, //是否横向滚动
+      //   startX: 0, //初始化时滚动至x
+      //   startY: 0, //初始化时滚动至y
+      //   indicators: true, //是否显示滚动条
+      //   deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+      //   bounce: true //是否启用回弹
+      // });
+
+
       var url = new URLSearchParams(location.search);
       var keyword = url.get('keyword');
       // alert(keyword);
       getProduct(1, keyword);
-      $('.lt-search span').click(function () {
+      $('.lt-search-span').on('tap',function () {
         var value = $('.mui-input-text').val();
+        // alert(value);
         if (!value.trim()) {
           mui.alert('请输出关键字');
         } else {
           getProduct(1, value);
         }
-
+      });
+      var bool = true;
+      $('.lt-sort').on('tap', 'a', function () {
+        if (bool == true) {
+          // getProduct(1,null,2);
+          bool = false;
+          $(this).find('i').addClass('fa-angle-up');
+          $(this).find('i').removeClass('fa-angle-down');
+        } else {
+          // getProduct(1,null,1);
+          bool = true;
+          $(this).find('i').removeClass('fa-angle-up');
+          $(this).find('i').addClass('fa-angle-down');
+        }
+      });
+      var priceNum = true;
+      $('.lt-sort a:nth-child(2)').on('tap', function () {
+        if (priceNum) {
+          getProduct(1, null, 2);
+          priceNum = false;
+        } else {
+          getProduct(1, null, 1);
+          priceNum = true;
+        }
+      });
+      var numFlag = true;
+      $('.lt-sort a:nth-child(3)').on('tap', function () {
+        if (numFlag) {
+          getProduct(1, null, null, 2);
+          numFlag = false;
+        } else {
+          getProduct(1, null, null, 1);
+          numFlag = true;
+        }
+      });
+      $('.lt-sports-content').on('tap','.btn',function(){
+        var id=$(this).data('id');
+        console.log(id);
+        location.href="detail.html?id="+id;
       });
     });
     // 商品渲染
+
+
     var getProduct = function (pageNum, proName, price, num) {
       // alert(proName);
       $.ajax({
@@ -143,7 +197,7 @@
         },
         success: function (data) {
           // alert(1);
-          console.log(data);
+          // console.log(data);
           if (data.data.length == 0) {
             mui.alert('没有相关商品');
           }
@@ -152,6 +206,37 @@
         }
       });
     }
+    mui.init({
+      pullRefresh: {
+        container: "#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+        up: {
+          height: 50,//可选.默认50.触发上拉加载拖动距离
+          auto: true,//可选,默认false.自动上拉加载一次
+          contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+          contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+          callback:function(){
+            var _this=this;
+            setTimeout(function(){
+              _this.endPullupToRefresh(true);
+            },5000);
+          }//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+        },
+        down: {
+          height: 50,//可选,默认50.触发下拉刷新拖动距离,
+          auto: false,//可选,默认false.首次加载自动下拉刷新一次
+          contentdown: "刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+          contentover: "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+          contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+          callback: function () {
+            setTimeout(function () {
+              getProduct(1, null);
+              mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+            }, 1500);
+
+          } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+        }
+      }
+    });
   </script>
 </body>
 

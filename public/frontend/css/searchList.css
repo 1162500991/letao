@@ -1,5 +1,6 @@
 .mui-content {
   background-color: #fff;
+  height: 100%;
 }
 .lt-searchlist {
   padding: 0 10px;
@@ -27,4 +28,8 @@
 
 .lt-sports-content{
   margin-top: 20px;
+}
+
+.lt-searchlist-content{
+  min-height: 510px;
 }

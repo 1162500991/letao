@@ -1,0 +1,131 @@
+.lt-footer-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  padding-left: 60px;
+}
+
+.lt-footer-container .add-cart {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  font-size: 30px;
+  color: #000;
+  line-height: 50px;
+}
+
+.lt-footer-container .btn-cart {
+  float: left;
+  width: 48%;
+  height: 38px;
+  border: 1px solid #991020;
+  background-color: #991020;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.lt-footer-container .btn-buy {
+  float: right;
+  width: 48%;
+  height: 38px;
+  border: 1px solid orange;
+  background-color: orange;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.mui-content {
+  background-color: #fff;
+}
+.product-name {
+  width: 100%;
+  padding: 15px 5px;
+  margin-bottom: 0px;
+  font-size: 18px;
+  color: #333;
+  border-top: 1px solid #ccc;
+}
+
+.product-price {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 5px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-price span:nth-child(2) {
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.product-price span:last-child {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.product-size {
+  width: 100%;
+  padding: 15px 5px;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-size small {
+  float: left;
+  margin-right: 5px;
+  line-height: 24px;
+}
+
+.product-size span {
+  float: left;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  margin-right: 4px;
+  font-size: 14px;
+}
+
+.product-size span.active {
+  background-color: orangered;
+  color: #fff;
+}
+
+.product-number {
+  padding: 15px 5px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.product-number small {
+  font-size: 16px;
+}
+
+.product-number .mui-numbox [class*=numbox-btn],
+.product-number  .mui-numbox [class*=btn-numbox] {
+  font-size: 16px;
+}
+
+.product-number .mui-numbox {
+  height: 24px;
+}
+
+
+
+
