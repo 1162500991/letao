@@ -1,0 +1,135 @@
+.cart-item {
+  position: relative;
+  width: 100%;
+  /* min-height: 80px; */
+  padding: 5px 0px;
+  padding-left: 60px;
+  overflow: hidden;
+}
+
+.cart-item-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+}
+
+.cart-item-left a {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.cart-item-left img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.cart-item-right {
+  position: relative;
+  width: 100%;
+  padding: 0 5px;
+  padding-right: 10px;
+}
+
+.cart-item-right p {
+  line-height: 18px;
+  font-size: 14px;
+}
+
+.cart-item-right-price {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.cart-item-right-price span {
+  float: left;
+
+}
+
+.cart-item-right-price span:first-child {
+  font-size: 14px;
+  color: red;
+}
+
+.cart-item-right-price span:nth-child(2) {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.cart-item-right-price span:nth-child(3) {
+  float: right;
+  margin-right: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+.cart-item-right b {
+  font-size: 14px;
+  color: #999;
+  font-weight: normal;
+}
+
+.cart-item-right i {
+  position: absolute;
+  top: 38%;
+  right: 0px;
+  color: #999;
+}
+
+/* 购物车弹出层 样式 */
+.product-size {
+  width: 100%;
+  padding: 15px 5px;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-size small {
+  float: left;
+  margin-right: 5px;
+  line-height: 24px;
+}
+
+.product-size span {
+  float: left;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  margin-right: 4px;
+  font-size: 14px;
+}
+
+.product-size span.active {
+  background-color: orangered;
+  color: #fff;
+}
+
+.product-number {
+  padding: 15px 5px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.product-number small {
+  font-size: 16px;
+}
+
+.product-number .mui-numbox [class*=numbox-btn],
+.product-number  .mui-numbox [class*=btn-numbox] {
+  font-size: 16px;
+}
+
+.product-number .mui-numbox {
+  height: 24px;
+}
+
+
+
+

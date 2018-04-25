@@ -5,16 +5,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<title></title>
-	<link href="css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="res/fontAwesome/css/font-awesome.min.css">
-  <link href="css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/reset.css">
+	<!-- 引入MUI -->
+	<link rel="stylesheet" href="./libs/mui/css/mui.css">
+	<!-- 引入字体图标库 -->
+	<link rel="stylesheet" href="./res/fontAwesome/css/font-awesome.css">
+	<!-- 引入公共样式 -->
+	<link rel="stylesheet" href="./css/common.css">
+	<!-- 引入页面样式 -->
+	<link rel="stylesheet" href="./css/cart.css">
+	<title>乐淘云购-购物车</title>
+	<!-- 引入网站图标 -->
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 </head>
 
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<i class="fa fa-arrow-left" aria-hidden="true"></i>
-		<h1 class="mui-title">登录</h1>
+		<h1 class="mui-title">购物车</h1>
 	</header>
 
 	<nav class="mui-bar mui-bar-tab">
@@ -23,7 +32,7 @@
 			<span class="mui-tab-label">首页</span>
 		</a>
 		<a class="mui-tab-item" href="#tabbar-with-chat">
-			<span  class="fa fa-bars" aria-hidden="true"></span>
+			<span class="fa fa-bars" aria-hidden="true"></span>
 			<span class="mui-tab-label">消息</span>
 		</a>
 		<a class="mui-tab-item" href="#tabbar-with-contact">
@@ -35,9 +44,205 @@
 			<span class="mui-tab-label">设置</span>
 		</a>
 	</nav>
+
+	<!--主体  -->
+	<div class="mui-content" id="refreshContainer">
+		<div class="mui-content-main">
+			<ul class="mui-content-ul mui-table-view" id="OA_task_1">
+
+			</ul>
+		</div>
+	</div>
+	<script type="text/template" id="cart-tpl">
+		<% for (var i = 0; i < data.length; i++) {%>
+			<li class="mui-table-view-cell">
+					<div class="mui-slider-left mui-disabled">
+						<a class="mui-btn mui-btn-blue" data-productsize="<%=data[i].productSize%>" data-size="<%=data[i].size%>" data-num="<%=data[i].num%>" data-id="<%=data[i].id%>">编辑</a>
+					</div>
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red" data-id="<%=data[i].id%>">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+							<div class="cart-item">
+									<div class="cart-item-left">
+										<a href="javascript:;">
+											<img src="<%=data[i].pic[0].picAddr%>" alt="">
+										</a>
+										<input type="checkbox" name="" id="">
+									</div>
+									<div class="cart-item-right">
+										<p><%=data[i].proName%></p>
+										<div class="cart-item-right-price">
+											<span>&yen; <%=data[i].price%></span>
+											<span>&yen; <%=data[i].oldPrice%></span>
+											<span>x<%=data[i].num%>双</span>
+										</div>
+										<b>鞋码: <%=data[i].size%></b>
+										<i class="fa fa-angle-right"></i>
+									</div>
+								</div>
+					</div>
+				</li>
+			<%}%>
+	</script>
+	<script type="text/template" id="edit-tpl">
+    <div class="edit" data-id="<%=id%>">
+      <!-- 尺码 -->
+      <div class="product-size">
+        <small>尺码:</small>
+        <%for (var i = productsize[0]; i <=productsize[1];i++){%>
+          <% if (i == size) {%>
+            <span class="active"><%=i%></span>
+            <% } else {%>
+            <span><%=i%></span>
+            <% }%>
+            <%}%>
+      </div>
+      <!-- 数量 -->
+      <div class="product-number">
+        <small>数量:</small>
+        <div class="mui-numbox" data-numbox-min='0' data-numbox-max='100'>
+          <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+          <input class="mui-numbox-input" type="number" value="<%=num%>" />
+          <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+        </div>
+        <span>剩余: 20件</span>
+      </div>
+
+    </div>
+  
+  
+  </script>
+	<script src="libs/zepto/zepto.min.js"></script>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.enterfocus.js"></script>
+	<script src="libs/artTemplate/template-native.js"></script>
 	<script src="js/app.js"></script>
+	<script>
+		mui.init({
+			pullRefresh: {
+				container: "#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+				down: {
+					height: 50,//可选,默认50.触发下拉刷新拖动距离,
+					auto: true,//可选,默认false.首次加载自动下拉刷新一次
+					contentdown: "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+					contentover: "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+					contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+					callback: function () {
+						getCartList();
+						setTimeout(function () {
+							mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+						}, 1500);
+					} //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				}
+			}
+		});
+		(function ($) {
+			var btnArray = ['确认', '取消'];
+			$('#OA_task_1').on('tap', '.mui-btn-red', function (event) {
+				// alert(1);
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				mui.confirm('确认删除该条记录？', '温馨提示', btnArray, function (e) {
+					if (e.index == 0) {
+						li.parentNode.removeChild(li);
+						// delCartList(id);
+						var array = [];
+						var id = parseInt(elem.dataset.id);
+						array.push(id);
+						delCartList(id);
+						getCartList();
+					} else {
+						setTimeout(function () {
+							$.swipeoutClose(li);
+						}, 0);
+					}
+				});
+			});
+			$('#OA_task_1').on('tap', '.mui-btn-blue', function (event) {
+				// alert(1);
+				var elem = this;
+				var id = elem.dataset.id;
+				var productsize = elem.dataset.productsize.split("-");
+				var num = elem.dataset.num;
+				var size = elem.dataset.size;
+				var li = elem.parentNode.parentNode;
+				var data = {
+					productsize: productsize,
+					num: num,
+					size: size,
+					id: id
+				}
+				var result = template('edit-tpl', data).replace(/\n/g, '');
+				// console.log(result);
+				mui.confirm(result, '编辑商品', ['确认', '取消'], function (e) {
+					if (e.index == 0) {
+						var id = elem.dataset.id;
+						var size = document.querySelector("span.active").innerHTML;
+						var num = mui('.mui-numbox').numbox().getValue();
+						// console.log(id);
+						$.ajax({
+							url: '/cart/updateCart',
+							type: 'post',
+							data: {
+								id: id,
+								size: size,
+								num: num
+							},
+							success: function (data) {
+								// console.log(data);
+								if(data.success){
+									getCartList();
+								}
+							}
+						});
+					} else {
+						setTimeout(function () {
+							$.swipeoutClose(li);
+						}, 0);
+					}		
+				});
+					// 点击编辑商品的时候动态创建的数字输入框，所以手动初始化
+				mui('.mui-numbox').numbox();
+			});
+		})(mui);
+		$(function () {
+			$('body').on('tap','.product-size span',function(){
+				$('.product-size span').removeClass('active');
+				$(this).addClass('active');
+				
+			});
+		})
+
+		var getCartList = function () {
+			$.ajax({
+				url: '/cart/queryCart',
+				type: 'get',
+				data: null,
+				success: function (data) {
+					// console.log(data);
+					if (data.error == 400) {
+						var url = location.href;
+						location.href = "login.html?url=" + url;
+					} else {
+						var html = template('cart-tpl', { data: data });
+						$('.mui-content-ul').html(html);
+					}
+
+				}
+			})
+		}
+		var delCartList = function (array) {
+			$.ajax({
+				url: '/cart/deleteCart',
+				type: 'get',
+				data: { id: array },
+				success: function (data) {
+					console.log(data);
+				}
+			});
+		}
+	</script>
 
 </body>
 
