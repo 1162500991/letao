@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>后台管理系统-登录</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css" />
+    <!-- 表单校验插件 -->
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css" />
+    <!-- 进度条插件 -->
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="bg_login">
+    <!-- 布局容器 -->
+    <div class="container">
+        <!-- 无论任何设备 都被分成了12列   -->
+        <div class="col-md-4 col-md-offset-4">
+            <!-- panel 也是bootstrap组件 -->
+            <div class="panel panel-primary mt_150">
+                <div class="panel-heading text-center">
+                    <h4>后台管理系统</h4>
+                </div>
+                <div class="panel-body">
+                    <!-- 这是bootstrap的表单组件 -->
+                    <form id="form" class="form-horizontal" autocomplete="off">
+                        <div class="form-group">
+                            <label for="inputUserName3" class="col-sm-3 control-label">用户名</label>
+                            <div class="col-sm-9">
+                                <input name="username" type="text" class="form-control" id="inputUserName3" placeholder="请输入用户名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">密码</label>
+                            <div class="col-sm-9">
+                                <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-10">
+                                <button type="reset" class="btn btn-default mr_50">重置</button>
+                                <!-- 登录按钮 必须在form标签内  登录按钮的type属性必须是 submit
+                                      只有满足以上两个条件 才能让bootstrapValiditor表单校验插件起作用
+                                -->
+                                <button type="submit" class="btn btn-primary">登录</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 引入jQuery  jquery第一个被引入 -->
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <!-- 引入bootstrap的js插件 -->
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入基于bootstrap的表单校验插件 -->
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <!-- 引入进度条插件 -->
+    <script src="./lib/nprogress/nprogress.js"></script>
+    <!-- 引入 公共的功能js文件 -->
+    <script src="js/admin.js"></script>
+    <!-- 引入当前页面的js -->
+    <script src="js/login.js"></script>
+</body>
+
+</html>
