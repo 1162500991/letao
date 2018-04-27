@@ -34,7 +34,7 @@ $('a[data-logout]').on('click', function () {
       <div class="modal-body">
       <p class="alert alert-danger"><i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？</p>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="logout-modal">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
         <button type="button" class="btn btn-primary">确定</button>
       </div>
@@ -45,7 +45,7 @@ $('a[data-logout]').on('click', function () {
   $('#myModal').modal('show');  
 });
 
-$('body').on('click','.modal-footer .btn-primary',function(){
+$('body').on('click','#logout-modal .btn-primary',function(){
   // console.log(1);
   $.ajax({
     url:'/employee/employeeLogout',
